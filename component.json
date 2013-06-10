@@ -1,0 +1,9 @@
+{
+  "name": "gym",
+  "version": "0.0.1",
+  "main": ["./gym.js"],
+  "dependencies": {
+    "jquery": "~1.8.0",
+    "when": "2.1.0"
+  }
+}
