@@ -1,0 +1,15 @@
+{
+  "name": "gym",
+  "version": "0.0.1",
+  "main": [
+    "./gym.js"
+  ],
+  "dependencies": {
+    "when": "~2.1.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
