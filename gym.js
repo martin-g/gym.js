@@ -39,7 +39,7 @@
 			// native click for <a>
 			$btn[0].click();
 		} else {
-			// jQuery.click() for <button> and <input type="button|submit">
+			// jQuery.click() for <button> and <input type="button|submit|image">
 			$btn.click();
 		}
 
@@ -57,7 +57,7 @@
 		_getIframe()
 			.off('load')
 			.one('load', function() {
-				
+
 				var newIframe, $$;
 
 				newIframe = window.frames[0];
@@ -78,7 +78,14 @@
 		return $(selector, _getIframe().contents());
 	};
 
-	var ajaxClick = function($btn) {
+	/**
+	 * Triggers an JS event on element and waits for an Ajax response
+	 *
+	 * @param eventName The name of the JS event
+	 * @param $el The target element
+	 * @returns A promise that will be fulfilled when the Ajax call returns
+	 */
+	var ajaxEvent = function(eventName, $el) {
 		var deferred = $.Deferred();
 		var iframeWindow = _getIframe()[0].contentWindow;
 
@@ -86,7 +93,7 @@
 			deferred.resolve($$);
 		});
 
-		$btn.click();
+		$el.trigger(eventName);
 
 		return deferred.promise();
 	}
@@ -118,6 +125,6 @@
 	window.gym = {
 		load: load,
 		click: click,
-		ajaxClick: ajaxClick
+		ajaxEvent: ajaxEvent
 	};
 })($q);
